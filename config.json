@@ -1,0 +1,27 @@
+{
+  "model": {
+    "encoders_layers":2,
+    "encoder":{
+      "key_size":8,
+      "query_size":8,
+      "value_size":8,
+      "num_hiddens":8,
+      "num_heads":2, 
+      "ffn_num_hiddens":16, 
+      "dropout":0.5
+    },
+    "classifier":{
+      "dropout1":0.5,
+      "dropout2":0.3,
+      "classes_num_hiddens":16,
+      "num_classes":4
+    }
+
+  },
+  "training": {
+    "learning_rate": 0.001,
+    "batch_size": 32,
+    "num_epochs": 100
+  }
+
+}
