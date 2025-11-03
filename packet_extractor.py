@@ -116,7 +116,9 @@ class FlowFeatureExtractor:
                 
             if len(flow_features) >= max_flows:
                 break
-                
+        
+        print(f"Extracted {len(flow_features)} flows from {pcap_file}")
+        print()
         return flow_features
 
     def group_packets_to_flows(self, packets):
@@ -348,12 +350,5 @@ if __name__ == "__main__":
     
     flow_features = extractor.extract_flow_features(r"data/0.pcap")
     
-    # print(f"提取了 {len(flow_features)} 个流")
-    # print(f"每个流特征维度: {len(flow_features[0])}")
-    # print(f"特征名称数量: {len(extractor.get_feature_names())}")
-    
-    # 转换为Transformer输入格式
-    # flow_features shape: (num_flows, feature_dim)
-    # 需要添加序列维度: (num_flows, 1, feature_dim)
-    # print(len(flow_features))
-    
+
+

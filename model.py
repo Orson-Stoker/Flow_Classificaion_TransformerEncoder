@@ -4,7 +4,6 @@ import json
 import torchvision
 from torch import nn
 from torchvision import models
-from d2l import torch as d2l
 
 
 class AddNorm(nn.Module):
@@ -107,12 +106,6 @@ class FlowClassifier(nn.Module):
         return self.classifier(x)
 
 
-
-#--test data--#
-# config_file="config.json"
-# f=FlowClassifier(config_file)
-# x=torch.tensor([[5, 64, 74], [5, 64, 90]],dtype=torch.float32)
-# print(f(x).shape) 
 
 
 
