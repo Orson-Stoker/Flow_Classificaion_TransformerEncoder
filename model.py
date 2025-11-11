@@ -82,8 +82,6 @@ class FlowClassifier(nn.Module):
         super(FlowClassifier, self).__init__(**kwargs)
         with open(config_file, 'r') as f:
             config= json.load(f)["model"]
-            
-        self.embedding = nn.Linear(1,config["encoder"]["num_hiddens"],dtype=torch.float32)
         self.blks=nn.Sequential()
         for i in range(config["encoders_layers"]):
             self.blks.add_module("encoderblock"+str(i),
@@ -98,14 +96,20 @@ class FlowClassifier(nn.Module):
         )
 
     def forward(self, x):
-        x=x.unsqueeze(-1)
-        x=self.embedding(x) 
         for blk in self.blks:
             x=blk(x)
         x=torch.mean(x,dim=1)
         return self.classifier(x)
 
+class BaseModel(nn.Module):
+    def __init__(self,**kwargs):
+        super(BaseModel, self).__init__(**kwargs)
+        self.dense1=nn.Linear(65,100)
+        self.relu=nn.ReLU()
+        self.dense2=nn.Linear(100,4)
 
+    def forward(self,x):
+        return self.dense2(self.relu(self.dense1(x)))     
 
 
 
