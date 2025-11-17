@@ -1,12 +1,12 @@
 {
   "model": {
-    "encoders_layers":1,
+    "encoders_layers":2,
     "encoder":{
       "key_size":69,
       "query_size":69,
       "value_size":69,
       "num_hiddens":69,
-      "num_heads":1, 
+      "num_heads":3,
       "ffn_num_hiddens":69, 
       "dropout":0.2
     },
@@ -14,16 +14,16 @@
       "dropout1":0.4,
       "dropout2":0.2,
       "classes_num_hiddens":138,
-      "num_classes":4
+      "num_classes":8
     }
 
   },
 
   "training": {
-    "npy_dir":"data",
+    "npy_dir":"features",
     "learning_rate": 0.0001,
     "batch_size": 32,
-    "epochs": 12,
+    "epochs": 24,
     "gpu":1,
     "log_steps":100,
     "splits":5,

@@ -101,15 +101,7 @@ class FlowClassifier(nn.Module):
         x=torch.mean(x,dim=1)
         return self.classifier(x)
 
-class BaseModel(nn.Module):
-    def __init__(self,**kwargs):
-        super(BaseModel, self).__init__(**kwargs)
-        self.dense1=nn.Linear(65,100)
-        self.relu=nn.ReLU()
-        self.dense2=nn.Linear(100,4)
 
-    def forward(self,x):
-        return self.dense2(self.relu(self.dense1(x)))     
 
 
 
